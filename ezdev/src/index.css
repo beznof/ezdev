@@ -1,7 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=SUSE:wght@100..800&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-bebas: "Bebas Neue", sans-serif;
+}
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -116,5 +121,13 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .neon-purple {
+    color: #9f1e92;
+    text-shadow:
+      0 0 4px #9f1e92;
   }
 }
