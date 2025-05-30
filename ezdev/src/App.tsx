@@ -1,16 +1,16 @@
 import React from 'react'
 import { Label } from './components/ui/label'
-import './App.css'
+import { BrowserRouter, Route, Routes } from 'react-router'
+import Regex from './pages/regex'
 
 function App() {
   return (
-    <>
-      <div>
-        <Label className="text-2xl font-bold text-gray-900">
-          Welcome to <span className="text-blue-500">EzDev</span>
-        </Label>
-      </div>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Label>Welcome to ezdev!</Label>} />
+        <Route path="/regex" element={<Regex/>} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
