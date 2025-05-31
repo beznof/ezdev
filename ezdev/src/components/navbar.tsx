@@ -1,17 +1,29 @@
 import React from "react";
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "./ui/navigation-menu";
+import RegexIcon from "../static/regex-icon";
 
 
-const tools: { title: string, href: string, description: string }[] = [
+const tools: { title: string, href: string, description: string, svg?: React.FC<React.SVGProps<SVGSVGElement>> }[] = [
     {
         title: "Regex Tester",
         href: "/regex",
-        description: "Test and validate your regular expressions with ease."
+        description: "Test and validate your regular expressions with ease.",
+        svg: RegexIcon
     },
     {
         title: "JWT Decoder",
         href: "/regex",
         description: "Decode and inspect JSON Web Tokens."
+    },
+    {
+        title: "Hash Generator",
+        href: "/regex",
+        description: "Generate hashes"
+    },
+    {
+        title: "Base64 Encode & Decoder",
+        href: "/regex",
+        description: "Decode and encode Base64 strings"
     },
 ];
 
@@ -32,20 +44,23 @@ const Navbar: React.FC = () => {
                         <NavigationMenuItem>
                             <NavigationMenuTrigger>Tools</NavigationMenuTrigger>
                             <NavigationMenuContent className="bg-white-100">
-                                <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 w-[500px]">
+                                <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 w-[600px] h-auto">
                                     {tools.map((t) => (
                                         <li key={t.title}>
                                             <NavigationMenuLink asChild>
                                                 <a
-                                                    className="bg-white hover:bg-zinc-100 flex h-full w-full flex-col justify-end rounded-md bg-linear-to-b p-6"
+                                                    className="bg-white hover:bg-zinc-100 hover:text-purple-500 hover:fill-purple-500 flex flex-row justify-start rounded-md bg-linear-to-b p-6 gap-3 h-full"
                                                     href={t.href}
                                                 >
-                                                    <div className="text-sm leading-none font-medium">
-                                                        {t.title}
+                                                    <RegexIcon className="size-10 fill-amber-300"/>
+                                                    <div className="flex flex-col">
+                                                        <div className="text-sm leading-none font-medium">
+                                                            {t.title}
+                                                        </div>
+                                                        <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
+                                                            {t.description}
+                                                        </p>
                                                     </div>
-                                                    <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
-                                                        {t.description}
-                                                    </p>
                                                 </a>
                                             </NavigationMenuLink>
                                         </li>
