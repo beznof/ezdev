@@ -7,14 +7,11 @@ type LayoutProps = {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <div className="w-full h-full flex flex-col">
+    <div className="w-full h-screen flex flex-col">
       <Navbar/>
-      <main className="layout-main">
+      <main className="w-full h-full">
         {children}
       </main>
-      <footer className="layout-footer">
-        <p>&copy; 2025 ezdev</p>
-      </footer>
     </div>
   );
 }

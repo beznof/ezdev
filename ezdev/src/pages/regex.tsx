@@ -6,6 +6,8 @@ const Regex: React.FC = () => {
     <Layout>
       <div>
         <h1>Regex Page</h1>
+        fwfwafwafawfw
+        <p>This is the regex page where you can test your regular expressions.</p>
       </div>
     </Layout>
   );
