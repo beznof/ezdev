@@ -1,29 +1,28 @@
 import React from "react";
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "./ui/navigation-menu";
 import RegexIcon from "../static/regex-icon";
+import Base64Icon from "../static/base64-icon";
+import HashIcon from "../static/hash-icon";
 
 
 const tools: { title: string, href: string, description: string, svg?: React.FC<React.SVGProps<SVGSVGElement>> }[] = [
     {
         title: "Regex Tester",
-        href: "/regex",
+        href: "/tools/regex",
         description: "Test and validate your regular expressions with ease.",
         svg: RegexIcon
     },
     {
-        title: "JWT Decoder",
-        href: "/regex",
-        description: "Decode and inspect JSON Web Tokens."
+        title: "Base64 Encoder & Decoder",
+        href: "/tools/base64",
+        description: "Decode and inspect JSON Web Tokens.",
+        svg: Base64Icon
     },
     {
         title: "Hash Generator",
-        href: "/regex",
-        description: "Generate hashes"
-    },
-    {
-        title: "Base64 Encode & Decoder",
-        href: "/regex",
-        description: "Decode and encode Base64 strings"
+        href: "/tools/hash",
+        description: "Generate hashes",
+        svg: HashIcon
     },
 ];
 
@@ -44,15 +43,15 @@ const Navbar: React.FC = () => {
                         <NavigationMenuItem>
                             <NavigationMenuTrigger>Tools</NavigationMenuTrigger>
                             <NavigationMenuContent className="bg-white-100">
-                                <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 w-[600px] h-auto">
+                                <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 min-w-[700px] h-auto">
                                     {tools.map((t) => (
                                         <li key={t.title}>
                                             <NavigationMenuLink asChild>
                                                 <a
-                                                    className="bg-white hover:bg-zinc-100 hover:text-purple-500 hover:fill-purple-500 flex flex-row justify-start rounded-md bg-linear-to-b p-6 gap-3 h-full"
+                                                    className="group bg-white hover:bg-zinc-100 hover:text-purple-500 hover:fill-purple-500 flex items-center flex-row justify-start rounded-md bg-linear-to-b p-6 gap-3 h-full"
                                                     href={t.href}
                                                 >
-                                                    <RegexIcon className="size-10 fill-amber-300"/>
+                                                    {t.svg && React.createElement(t.svg, {className: "size-10 min-w-10 group-hover:text-purple-500"})}
                                                     <div className="flex flex-col">
                                                         <div className="text-sm leading-none font-medium">
                                                             {t.title}

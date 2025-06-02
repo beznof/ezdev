@@ -11,8 +11,7 @@ const RegexIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
         stroke="none" 
         fill="#currentColor" 
         fill-rule="evenodd"
-      >
-      </path>
+      />
     </svg>
   );
 }
