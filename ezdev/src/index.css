@@ -127,7 +127,7 @@
 
 @layer utilities {
   .neon-purple {
-    color: #9f1e92;
+    color: var(--color-purple-500);
     text-shadow:
       0 0 4px #9f1e92;
   }

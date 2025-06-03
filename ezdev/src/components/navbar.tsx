@@ -28,21 +28,25 @@ const tools: { title: string, href: string, description: string, svg?: React.FC<
 
 const Navbar: React.FC = () => {
     return (
-        <nav className="w-full max-w-h-[75px] flex items-center justify-center border-b-1 border-zinc-200 bg-white">
+        <nav className="w-full max-w-h-[75px] flex items-center justify-center opacity-100">
             <div className="flex w-full h-full items-center justify-start transition-all mx-5 gap-3">
-                <a className="flex items-baseline flex-row gap-1 select-none cursor-pointer bg-white hover:bg-zinc-100 rounded-xl p-1 m-3 transition-all" href="/">
-                    <span className="italic text-[50px] h-fit font-light neon-purple font-bebas tracking-normal">
+                <a className="hover:opacity-70 flex items-baseline flex-row gap-1 select-none cursor-pointer p-1 m-3 transition-all" href="/">
+                    <span className="italic text-[50px] h-fit font-light font-bebas tracking-normal text-fuchsia-400 text-shadow-[0_0_10px_rgba(232,121,249,1)]">
                         EZ
                     </span>
                     <span className="font-bebas text-[30px] text-black dark:text-white">
                         dev
                     </span>
                 </a>
-                <NavigationMenu>
+                <NavigationMenu className="[&_[data-slot=navigation-menu-viewport]]:!bg-transparent">
                     <NavigationMenuList>
                         <NavigationMenuItem>
-                            <NavigationMenuTrigger>Tools</NavigationMenuTrigger>
-                            <NavigationMenuContent className="bg-white-100">
+                            <NavigationMenuTrigger
+                                className="bg-white/0 hover:bg-fuchsia-500/10 data-[state=open]:bg-fuchsia-500/5 data-[state=open]:hover:bg-fuchsia-500/10"
+                            >
+                                Tools
+                            </NavigationMenuTrigger>
+                            <NavigationMenuContent className="bg-amber-400/3 backdrop-blur-sm">
                                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 min-w-[700px] h-auto">
                                     {tools.map((t) => (
                                         <li key={t.title}>
