@@ -5,6 +5,7 @@ import Base64Icon from "../static/base64-icon";
 import HashIcon from "../static/hash-icon";
 import ThemeIcon from "../static/theme-icon";
 import { useTheme } from "./theme-provider";
+import { Navigation } from "lucide-react";
 
 
 const tools: { title: string, href: string, description: string, svg?: React.FC<React.SVGProps<SVGSVGElement>> }[] = [
@@ -75,6 +76,13 @@ const Navbar: React.FC = () => {
                                         ))}
                                     </ul>
                                 </NavigationMenuContent>
+                            </NavigationMenuItem>
+                            <NavigationMenuItem>
+                                <NavigationMenuTrigger
+                                    className="bg-white/0 hover:bg-gray-500/10 data-[state=open]:bg-gray-500/5 data-[state=open]:hover:bg-gray-500/10 !transition-none"
+                                >
+                                    Cheatsheets
+                                </NavigationMenuTrigger>
                             </NavigationMenuItem>
                         </NavigationMenuList>
                     </NavigationMenu>

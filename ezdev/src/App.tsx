@@ -1,8 +1,7 @@
-import React from 'react'
-import { Label } from './components/ui/label'
+
 import { BrowserRouter, Route, Routes } from 'react-router'
 import Regex from './pages/regex'
-import Layout from './layout/layout'
+import Home from './pages/home'
 import { ThemeProvider } from './components/theme-provider'
 
 function App() {
@@ -10,7 +9,7 @@ function App() {
     <ThemeProvider defaultTheme="dark" storageKey="theme">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Layout><Label>Welcome to ezdev!</Label></Layout>} />
+          <Route path="/" element={<Home/>} />
           <Route path="/tools">
             <Route path="regex" element={<Regex/>} />
             <Route path="base64" element={<Regex/>} />
