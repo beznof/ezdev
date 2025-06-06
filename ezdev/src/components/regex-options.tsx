@@ -1,21 +1,31 @@
+import React from "react";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "./ui/select";
 import { ToggleGroup, ToggleGroupItem } from "./ui/toggle-group";
+import type { Engine, Flag } from "../types/regex";
 
-type Engine = {
-  name: string;
-}
-
-type OptionsProps = {
+type RegexOptionsProps = {
   engines: Engine[];
-}
+  currentEngine: Engine;
+  setCurrentEngine: (engine: Engine) => void;
+  currentFlags: string[];
+  setCurrentFlags: (flags: string[]) => void;
+};
 
-const RegexOptions: React.FC<OptionsProps> = ( {engines} ) => {
+const RegexOptions: React.FC<RegexOptionsProps> = ({ engines, currentEngine, setCurrentEngine, currentFlags, setCurrentFlags }) => {
+
   return (
     <div className="flex flex-row w-full h-full items-center justify-start gap-5">
       Options:
 
       {/* Engines */}
-      <Select defaultValue={engines[0].name}>
+      <Select value={currentEngine.name}
+        onValueChange={(value) => {
+          const newEngine = engines.find((engine) => engine.name === value);
+          if (newEngine) {
+            setCurrentEngine(newEngine);
+          }
+        }}
+      >
         <SelectTrigger className="w-[130px]">
           <SelectValue/>
         </SelectTrigger>
@@ -37,16 +47,20 @@ const RegexOptions: React.FC<OptionsProps> = ( {engines} ) => {
       </Select>
 
       {/* Flags */}
-      <ToggleGroup type="multiple">
-        <ToggleGroupItem value="global">
-            global
-        </ToggleGroupItem>
-        <ToggleGroupItem value="ignore-case">
-            ignore case
-        </ToggleGroupItem>
-        <ToggleGroupItem value="multiline">
-            multiline
-        </ToggleGroupItem>
+      <ToggleGroup 
+        type="multiple"
+        value={currentFlags}
+        onValueChange={(value) => setCurrentFlags(value)}
+      >
+        {currentEngine.flags.map((flag) => {
+          return (
+            <ToggleGroupItem 
+              value={flag.index}
+            >
+              {flag.index}
+            </ToggleGroupItem>
+          )
+        })}
       </ToggleGroup>
 
     </div>
