@@ -2,8 +2,8 @@ import React from 'react';
 import Layout from '../layout/layout';
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "../components/ui/resizable"
 import RegexOptions from '../components/regex-options';
-import type { Engine, Flag } from "../types/regex";
-import { engines, flags } from "../data/regex";
+import type { Engine } from "../types/regex";
+import { engines } from "../data/regex";
 
 const Regex: React.FC = () => {
   const [selectedEngine, setSelectedEngine] = React.useState<Engine>(engines[0]);

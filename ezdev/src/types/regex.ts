@@ -1,6 +1,10 @@
+import type { JSX } from "react";
+
 export type Flag = {
   index: string;
-  card?: React.FC;
+  name: string;
+  description: string;
+  example: string | (() => JSX.Element);
 }
 
 export type Engine = {
