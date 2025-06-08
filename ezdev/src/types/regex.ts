@@ -1,10 +1,8 @@
-import type { JSX } from "react";
-
 export type Flag = {
   index: string;
   name: string;
   description: string;
-  example: string | (() => JSX.Element);
+  example: React.ReactNode;
 }
 
 export type Engine = {

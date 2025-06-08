@@ -15,7 +15,7 @@ type RegexOptionsProps = {
 const RegexOptions: React.FC<RegexOptionsProps> = ({ engines, currentEngine, setCurrentEngine, currentFlags, setCurrentFlags }) => {
 
   return (
-    <div className="flex flex-row w-full h-full items-center justify-start gap-5">
+    <div className="flex flex-row w-full h-full items-center justify-start gap-5 select-none">
       <p className="font-semibold">
         Options:
       </p>
@@ -67,7 +67,7 @@ const RegexOptions: React.FC<RegexOptionsProps> = ({ engines, currentEngine, set
                   {flag.index}
                 </ToggleGroupItem>
               </HoverCardTrigger>
-              <HoverCardContent className="w-fit max-w-[400px] bg-gray-100/20 dark:bg-gray-950/20 backdrop-blur-md">
+              <HoverCardContent className="w-fit bg-gray-100/20 dark:bg-gray-950/20 backdrop-blur-md">
                 <div className="flex flex-col gap-2 w-full h-full justify-center items-start">
                   <p className="text-md font-semibold">{flag.name}</p>
                   <p className="text-xs text-gray-500 dark:text-gray-400">{flag.description}</p>
