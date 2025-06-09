@@ -1,33 +1,8 @@
 import React from "react";
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "./ui/navigation-menu";
-import RegexIcon from "../static/regex-icon";
-import Base64Icon from "../static/base64-icon";
-import HashIcon from "../static/hash-icon";
 import ThemeIcon from "../static/theme-icon";
 import { useTheme } from "./theme-provider";
-import { Navigation } from "lucide-react";
-
-
-const tools: { title: string, href: string, description: string, svg?: React.FC<React.SVGProps<SVGSVGElement>> }[] = [
-    {
-        title: "Regex Tester",
-        href: "/tools/regex",
-        description: "Test and validate your regular expressions with ease.",
-        svg: RegexIcon
-    },
-    {
-        title: "Base64 Encoder & Decoder",
-        href: "/tools/base64",
-        description: "Decode and inspect JSON Web Tokens.",
-        svg: Base64Icon
-    },
-    {
-        title: "Hash Generator",
-        href: "/tools/hash",
-        description: "Generate hashes",
-        svg: HashIcon
-    },
-];
+import { tools } from "../data/navbar-tools";
 
 const Navbar: React.FC = () => {
     const { toggleTheme } = useTheme()
@@ -36,14 +11,15 @@ const Navbar: React.FC = () => {
         <nav className="w-full max-h-[75px] flex items-center justify-center select-none border-b-1 border-gray-950/5 dark:border-white/5">
             <div className="flex w-full h-full items-center justify-between transition-all mx-5">
                 <div className="flex flex-row items-center gap-3">
-                    <a className="hover:opacity-70 flex items-baseline flex-row gap-1 cursor-pointer p-1 m-3 transition-all" href="/">
-                        <span className="italic text-[50px] h-fit font-light font-bebas tracking-normal text-fuchsia-400 text-shadow-[0_0_10px_rgba(232,121,249,1)]">
+                    <a className="logo m-3 hover:opacity-70 " href="/">
+                        <span className="logo-primary">
                             EZ
                         </span>
-                        <span className="font-bebas text-[30px] text-black dark:text-white">
+                        <span className="logo-secondary">
                             dev
                         </span>
                     </a>
+
                     <NavigationMenu className="[&_[data-slot=navigation-menu-viewport]]:!bg-transparent">
                         <NavigationMenuList>
                             <NavigationMenuItem>
@@ -87,9 +63,10 @@ const Navbar: React.FC = () => {
                         </NavigationMenuList>
                     </NavigationMenu>
                 </div>
+
                 <div className="flex flex-row items-center justify-end gap-3">
                     <ThemeIcon 
-                        className="size-10 rounded-sm p-2 bg-transparent fill-transparent stroke-gray-950 dark:stroke-white hover:bg-gray-500/10"
+                        className="size-10 rounded-sm p-2 bg-transparent custom-text-color !fill-transparent hover:bg-gray-500/10"
                         onClick={() => toggleTheme()}
                     />
                 </div>

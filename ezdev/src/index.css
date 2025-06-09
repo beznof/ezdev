@@ -126,9 +126,19 @@
 }
 
 @layer utilities {
-  .neon-purple {
-    color: var(--color-purple-500);
-    text-shadow:
-      0 0 4px #9f1e92;
+  .logo-primary {
+    @apply italic text-[50px] h-fit font-light font-bebas tracking-normal text-fuchsia-400 text-shadow-[0_0_10px_rgba(232,121,249,1)]
+  }
+
+  .logo-secondary {
+    @apply font-bebas text-[30px] text-black dark:text-white
+  }
+
+  .logo {
+    @apply flex items-baseline flex-row gap-1 cursor-pointer transition-all
+  }
+
+  .custom-text-color {
+    @apply text-gray-950 dark:text-white fill-gray-950 dark:fill-white stroke-gray-950 dark:stroke-white;
   }
 }
