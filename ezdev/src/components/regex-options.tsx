@@ -15,7 +15,7 @@ type RegexOptionsProps = {
 const RegexOptions: React.FC<RegexOptionsProps> = ({ engines, currentEngine, setCurrentEngine, currentFlags, setCurrentFlags }) => {
 
   return (
-    <div className="flex flex-row w-full h-full items-center justify-start gap-5 select-none">
+    <div className="flex flex-row w-full h-fit items-center justify-start gap-5 select-none">
       <p className="font-semibold">
         Options:
       </p>

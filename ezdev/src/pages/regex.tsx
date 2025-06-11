@@ -2,29 +2,44 @@ import React from 'react';
 import Layout from '../layout/layout';
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "../components/ui/resizable"
 import RegexOptions from '../components/regex-options';
+import RegexInput from '../components/RegexInput';
 import type { Engine } from "../types/regex";
 import { engines } from "../data/regex";
 
 const Regex: React.FC = () => {
   const [selectedEngine, setSelectedEngine] = React.useState<Engine>(engines[0]);
   const [selectedFlags, setSelectedFlags] = React.useState<string[]>([]);
+  const [testString, setTestString] = React.useState<string>("");
+  const [regexPattern, setRegexPattern] = React.useState<string>("");
 
   React.useEffect(() => { console.log(selectedEngine.name) }, [selectedEngine]);
   React.useEffect(() => { console.log(selectedFlags) }, [selectedFlags]);
+  React.useEffect(() => { console.log(testString) }, [testString]);
+  React.useEffect(() => { console.log(regexPattern) }, [regexPattern]);
 
   return (
     <Layout>
-      <div className="flex w-full h-full">
-        <ResizablePanelGroup direction="horizontal" className="w-full h-full">
+      <div className="flex w-full flex-grow min-h-0">
+        <ResizablePanelGroup direction="horizontal" className="w-full h-full max-h-full">
             <ResizablePanel defaultSize={60}>
-              <div className = "flex flex-col m-5">
-                <RegexOptions 
-                  engines={engines} 
-                  currentEngine={selectedEngine} 
-                  setCurrentEngine={setSelectedEngine}
-                  currentFlags={selectedFlags}
-                  setCurrentFlags={setSelectedFlags}
-                />
+              <div className = "flex flex-col m-5 gap-y-4 flex-grow min-h-0">
+                <div className='flex shrink-0'>
+                  <RegexOptions 
+                    engines={engines} 
+                    currentEngine={selectedEngine} 
+                    setCurrentEngine={setSelectedEngine}
+                    currentFlags={selectedFlags}
+                    setCurrentFlags={setSelectedFlags}
+                  />
+                </div>
+                <div className='flex flex-col flex-grow min-h-0'>
+                  <RegexInput
+                    testString={testString}
+                    regexPattern={regexPattern}
+                    setRegexPattern={setRegexPattern}
+                    setTestString={setTestString}
+                  />
+                </div>
               </div>
             </ResizablePanel>
 
