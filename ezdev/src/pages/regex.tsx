@@ -12,11 +12,6 @@ const Regex: React.FC = () => {
   const [testString, setTestString] = React.useState<string>("");
   const [regexPattern, setRegexPattern] = React.useState<string>("");
 
-  React.useEffect(() => { console.log(selectedEngine.name) }, [selectedEngine]);
-  React.useEffect(() => { console.log(selectedFlags) }, [selectedFlags]);
-  React.useEffect(() => { console.log(testString) }, [testString]);
-  React.useEffect(() => { console.log(regexPattern) }, [regexPattern]);
-
   return (
     <Layout>
       <div className="flex w-full flex-grow min-h-0">
