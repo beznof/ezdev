@@ -9,19 +9,17 @@ type RegexInputProps = {
 }
 
 const RegexInput: React.FC<RegexInputProps> = ({ testString, regexPattern, setTestString, setRegexPattern }) => {
-  console.log(testString, regexPattern);
-
   return (
-    <div className='flex flex-col gap-y-5 h-full overflow-y-auto'>
+    <div className='flex flex-col gap-y-5 h-full min-h-0'>
       <Textarea
         placeholder='Your regex pattern goes here...'
-        className='shrink-0'
+        className='min-h-[15%] max-h-[30%] h-fit'
         value={regexPattern}
         onChange={(e) => setRegexPattern(e.target.value)}
       />
       <Textarea
         placeholder='Your test string goes here...'
-        className='flex-grow resize-none'
+        className='flex-grow resize-none min-h-0 h-[50%]'
         value={testString}
         onChange={(e) => setTestString(e.target.value)}
       />
