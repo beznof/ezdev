@@ -4,13 +4,24 @@ import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "../compone
 import RegexOptions from '../components/regex-options';
 import RegexInput from '../components/RegexInput';
 import type { Engine } from "../types/regex";
-import { engines } from "../data/regex";
+import { engines, flags } from "../data/regex";
+import { JavaScriptRegexEngine } from '../utils/regex-engines/jsRegexParser';
+import type { RegexMatch } from '../interfaces/regex';
 
 const Regex: React.FC = () => {
   const [selectedEngine, setSelectedEngine] = React.useState<Engine>(engines[0]);
   const [selectedFlags, setSelectedFlags] = React.useState<string[]>([]);
   const [testString, setTestString] = React.useState<string>("");
   const [regexPattern, setRegexPattern] = React.useState<string>("");
+
+  React.useEffect(() => {
+    console.log("Test string: " + testString);
+    console.log("Regex pattern: " + regexPattern);
+    console.log("Select flags: " + selectedFlags)
+    const engine = new JavaScriptRegexEngine();
+    const match = engine.match(regexPattern, testString, selectedFlags);
+    console.log(match);
+  },[testString])
 
   return (
     <Layout>
