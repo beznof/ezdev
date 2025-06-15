@@ -15,13 +15,18 @@ const Regex: React.FC = () => {
   const [regexPattern, setRegexPattern] = React.useState<string>("");
 
   React.useEffect(() => {
-    console.log("Test string: " + testString);
-    console.log("Regex pattern: " + regexPattern);
-    console.log("Select flags: " + selectedFlags)
-    const engine = new JavaScriptRegexEngine();
-    const match = engine.match(regexPattern, testString, selectedFlags);
-    console.log(match);
-  },[testString])
+
+    const delay = setTimeout(() => {
+      console.log("Test string: " + testString);
+      console.log("Regex pattern: " + regexPattern);
+      console.log("Select flags: " + selectedFlags)
+      const engine = new JavaScriptRegexEngine();
+      const match = engine.match(regexPattern, testString, selectedFlags);
+      console.log(match);
+    }, 500);
+
+    return () => clearTimeout(delay);
+  },[testString, regexPattern, selectedFlags, selectedEngine])
 
   return (
     <Layout>

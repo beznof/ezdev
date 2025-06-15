@@ -12,18 +12,6 @@ type RegexInputProps = {
 }
 
 const RegexInput: React.FC<RegexInputProps> = ({ testString, regexPattern, setTestString, setRegexPattern }) => {
-  const [testStringLength, setTestStringLength] = React.useState<number>(0);
-  const [regexPatternLength, setRegexPatternLength] = React.useState<number>(0);
-
-  React.useEffect(() => {
-    setRegexPatternLength(regexPattern.length);
-    console.log(regexPattern.length);
-  },[regexPattern])
-
-  React.useEffect(() => {
-    setTestStringLength(testString.length);
-    console.log(testString.length);
-  },[testString])
 
   return (
     <div className='flex flex-col gap-y-5 h-full min-h-0 justify-start items-start'>
