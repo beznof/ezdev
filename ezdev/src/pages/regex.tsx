@@ -6,7 +6,7 @@ import RegexInput from '../components/RegexInput';
 import type { Engine } from "../types/regex";
 import { engines, flags } from "../data/regex";
 import { JavaScriptRegexEngine } from '../utils/regex-engines/jsRegexParser';
-import type { RegexMatch } from '../interfaces/regex';
+import type { RegexMatch } from '../types/regex';
 
 const Regex: React.FC = () => {
   const [selectedEngine, setSelectedEngine] = React.useState<Engine>(engines[0]);
@@ -17,9 +17,6 @@ const Regex: React.FC = () => {
   React.useEffect(() => {
 
     const delay = setTimeout(() => {
-      console.log("Test string: " + testString);
-      console.log("Regex pattern: " + regexPattern);
-      console.log("Select flags: " + selectedFlags)
       const engine = new JavaScriptRegexEngine();
       const match = engine.match(regexPattern, testString, selectedFlags);
       console.log(match);
