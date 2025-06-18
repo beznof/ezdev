@@ -2,7 +2,7 @@ import type { RegexEngine } from "../../interfaces/regex";
 import type { RegexMatch, CaptureGroup } from "../../types/regex";
 
 export class JavaScriptRegexEngine implements RegexEngine {
-  match(regexPattern: string, testString: string, flags: string[]): RegexMatch[] {
+  async match(regexPattern: string, testString: string, flags: string[]): Promise<RegexMatch[]> {
     try {
       // Regex setup
       const flagsParsed = flags.join("") + "d";                   // Joining the flags array into a string
@@ -13,7 +13,11 @@ export class JavaScriptRegexEngine implements RegexEngine {
 
       // Matching
       let match;
+      let lastIndex = -1;
       while((match = regex.exec(testString)) !== null) {
+        if(match.index === lastIndex) break;
+        lastIndex = match.index;
+
         const indices = (match as any).indices as [number,number][] | undefined;
         const captureGroups: Record<number, CaptureGroup> = {};
         const namedGroups: Record<string, CaptureGroup> = {};

@@ -15,18 +15,18 @@ type RegexInputProps = {
 
 const RegexInput: React.FC<RegexInputProps> = ({ testString, regexPattern, setTestString, setRegexPattern, matches }) => {
   return (
-    <div className='flex flex-col gap-y-5 h-full min-h-0 justify-start items-start'>
+    <div className='flex flex-col gap-y-5 h-full min-h-0 w-full p-3'>
       <Textarea
         placeholder='Your regex pattern goes here...'
-        className='min-h-[15%] max-h-[30%] h-fit'
+        className='min-h-[15%] max-h-[30%] h-fit input-box'
         value={regexPattern}
         onChange={(e) => setRegexPattern(e.target.value)}
         maxLength={MAX_REGEX_LENGTH}
       />
 
-      <div className='flex-grow relative min-h-0 h-[50%] w-full bg-black/20'>
-        <div className='absolute inset-0 pointer-events-none overflow-auto'>
-          <div className='whitespace-pre-wrap break-words text-transparent bg-transparent'>
+      <div className='flex-grow relative min-h-0 h-[50%] w-full input-box'>
+        <div className='absolute pointer-events-none overflow-auto p-3'>
+          <div className='whitespace-pre-wrap break-all text-transparent bg-transparent '>
             <HighlightedText
               testString={testString}
               matches={matches}
@@ -35,7 +35,7 @@ const RegexInput: React.FC<RegexInputProps> = ({ testString, regexPattern, setTe
         </div>
           <textarea
             placeholder='Your test string goes here...'
-            className='resize-none w-full h-full bg-transparent m-0 rounded-none absolute'
+            className='resize-none w-full h-full bg-transparent m-0 p-3 border-0 outline-0 ring-0 whitespace-pre-wrap break-all'
             value={testString}
             onChange={(e) => setTestString(e.target.value)}
             maxLength={MAX_STRING_LENGTH}
@@ -44,6 +44,9 @@ const RegexInput: React.FC<RegexInputProps> = ({ testString, regexPattern, setTe
     </div>
   )
 }
+
+
+// Used to highlight matches within the textarea
 
 type HighlightedTextProps = {
   testString: string;
@@ -63,7 +66,7 @@ const HighlightedText: React.FC<HighlightedTextProps> = ({ testString, matches }
       highlighted.push(testString.slice(lastIndex, match.startIndex));
     }
 
-    highlighted.push(<mark className="bg-emerald-500">{match.fullMatch}</mark>);
+    highlighted.push(<mark className="bg-emerald-500/20 text-transparent">{match.fullMatch}</mark>);
 
     lastIndex = match.endIndex;
   }

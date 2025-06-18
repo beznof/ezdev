@@ -131,7 +131,7 @@
   }
 
   .logo-secondary {
-    @apply font-bebas text-[30px] text-black dark:text-white
+    @apply font-bebas text-[30px] text-zinc-950 dark:text-white
   }
 
   .logo {
@@ -139,6 +139,12 @@
   }
 
   .custom-text-color {
-    @apply text-gray-950 dark:text-white fill-gray-950 dark:fill-white stroke-gray-950 dark:stroke-white;
+    @apply text-zinc-950 dark:text-white fill-zinc-950 dark:fill-white stroke-zinc-950 dark:stroke-white;
+  }
+
+  .input-box {
+    @apply !bg-black/25 !backdrop-blur-md 
+    !rounded-md !border-2 !border-zinc-950/5 dark:!border-white/5 focus-within:!ring-2 focus-within:!ring-zinc-100/15 
+    !transition-shadow !duration-300
   }
 }

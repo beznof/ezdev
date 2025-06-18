@@ -15,12 +15,16 @@ const Regex: React.FC = () => {
   const [regexPattern, setRegexPattern] = React.useState<string>("");
   const [matches, setMatches] = React.useState<RegexMatch[]>([]);
 
+  const latestEngineRun = React.useRef(0);
+
   React.useEffect(() => {
-    const delay = setTimeout(() => {
+    const currentEngineRun = ++latestEngineRun.current;
+
+    const delay = setTimeout(async () => {
       const engine = new JavaScriptRegexEngine();
-      const newMatches = engine.match(regexPattern, testString, selectedFlags);
-      setMatches(newMatches);
-    }, 50);
+      const newMatches = await engine.match(regexPattern, testString, selectedFlags);
+      if(latestEngineRun.current === currentEngineRun) setMatches(newMatches);
+    }, 100);
     return () => clearTimeout(delay);
   },[testString, regexPattern, selectedFlags, selectedEngine])
 
