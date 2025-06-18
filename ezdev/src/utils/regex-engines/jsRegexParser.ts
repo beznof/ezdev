@@ -9,7 +9,7 @@ export class JavaScriptRegexEngine implements RegexEngine {
       const regex = new RegExp(regexPattern, flagsParsed);  
       
       // Initializing values
-      let regexMatches: RegexMatch[] = [];
+      const regexMatches: RegexMatch[] = [];
 
       // Matching
       let match;
@@ -44,7 +44,7 @@ export class JavaScriptRegexEngine implements RegexEngine {
         regexMatches.push({
           fullMatch: match[0],
           startIndex: match.index,
-          endIndex: match.index + match.length,
+          endIndex: match.index + match[0].length,
           captureGroups,
           namedGroups
         });

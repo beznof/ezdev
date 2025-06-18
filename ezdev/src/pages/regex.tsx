@@ -4,7 +4,7 @@ import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "../compone
 import RegexOptions from '../components/regex-options';
 import RegexInput from '../components/RegexInput';
 import type { Engine } from "../types/regex";
-import { engines, flags } from "../data/regex";
+import { engines } from "../data/regex";
 import { JavaScriptRegexEngine } from '../utils/regex-engines/jsRegexParser';
 import type { RegexMatch } from '../types/regex';
 
@@ -13,15 +13,14 @@ const Regex: React.FC = () => {
   const [selectedFlags, setSelectedFlags] = React.useState<string[]>([]);
   const [testString, setTestString] = React.useState<string>("");
   const [regexPattern, setRegexPattern] = React.useState<string>("");
+  const [matches, setMatches] = React.useState<RegexMatch[]>([]);
 
   React.useEffect(() => {
-
     const delay = setTimeout(() => {
       const engine = new JavaScriptRegexEngine();
-      const match = engine.match(regexPattern, testString, selectedFlags);
-      console.log(match);
-    }, 500);
-
+      const newMatches = engine.match(regexPattern, testString, selectedFlags);
+      setMatches(newMatches);
+    }, 50);
     return () => clearTimeout(delay);
   },[testString, regexPattern, selectedFlags, selectedEngine])
 
@@ -46,6 +45,7 @@ const Regex: React.FC = () => {
                     regexPattern={regexPattern}
                     setRegexPattern={setRegexPattern}
                     setTestString={setTestString}
+                    matches={matches}
                   />
                 </div>
               </div>
