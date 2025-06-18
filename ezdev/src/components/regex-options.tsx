@@ -26,6 +26,7 @@ const RegexOptions: React.FC<RegexOptionsProps> = ({ engines, currentEngine, set
           const newEngine = engines.find((engine) => engine.name === value);
           if (newEngine) {
             setCurrentEngine(newEngine);
+            setCurrentFlags([]);
           }
         }}
       >
@@ -40,7 +41,7 @@ const RegexOptions: React.FC<RegexOptionsProps> = ({ engines, currentEngine, set
                 return (
                   <SelectItem 
                     value={engine.name}
-                    className="hover:bg-gray-100 dark:hover:bg-zinc-800 hover:!text-purple-500 hover:fill-purple-500"
+                    className="hover:bg-gray-100 dark:hover:bg-zinc-800 hover:!text-purple-500 custom-text-color"
                   >
                     {engine.name}
                   </SelectItem>
@@ -54,8 +55,10 @@ const RegexOptions: React.FC<RegexOptionsProps> = ({ engines, currentEngine, set
       {/* Flags */}
       <ToggleGroup 
         type="multiple"
+        variant="outline"
         value={currentFlags}
         onValueChange={(value) => setCurrentFlags(value)}
+        className="dark:!bg-black/25 !bg-white/25 overflow-hidden"
       >
         {currentEngine.flags.map((flag) => {
           return (
@@ -63,6 +66,7 @@ const RegexOptions: React.FC<RegexOptionsProps> = ({ engines, currentEngine, set
               <HoverCardTrigger>
                 <ToggleGroupItem 
                   value={flag.index}
+                  className="!rounded-none px-2 hover:bg-zinc-800 hover:text-purple-500 data-[state=on]:text-purple-500"
                 >
                   {flag.index}
                 </ToggleGroupItem>
