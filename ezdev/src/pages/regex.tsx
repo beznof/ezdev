@@ -30,10 +30,10 @@ const Regex: React.FC = () => {
 
   return (
     <Layout>
-      <div className="flex w-full flex-grow min-h-0">
-        <ResizablePanelGroup direction="horizontal" className="w-full flex-grow min-h-0 h-full">
-            <ResizablePanel defaultSize={60} className="min-h-0 h-full">
-              <div className = "flex flex-col h-full p-5 gap-y-4 min-h-0">
+      <div className="flex flex-grow w-full min-h-0">
+        <ResizablePanelGroup direction="horizontal" className="flex-grow w-full h-full min-h-0">
+            <ResizablePanel defaultSize={60} className="h-full min-h-0 max-w-[70%] min-w-[50%]">
+              <div className = "flex flex-col h-full min-h-0 p-5 gap-y-4">
                 <div className='flex shrink-0'>
                   <RegexOptions 
                     engines={engines} 
@@ -43,7 +43,7 @@ const Regex: React.FC = () => {
                     setCurrentFlags={setSelectedFlags}
                   />
                 </div>
-                <div className='flex flex-col flex-grow min-h-0 overflow-hidden'>
+                <div className='flex flex-col flex-grow min-h-0 overflow-y-hidden'>
                   <RegexInput
                     testString={testString}
                     regexPattern={regexPattern}
@@ -57,14 +57,7 @@ const Regex: React.FC = () => {
 
             <ResizableHandle withHandle className="bg-gray-950/5 dark:bg-white/5"/>
 
-            <ResizablePanel defaultSize={40}>
-                <ResizablePanelGroup direction="vertical" className="w-full h-full min-h-0">
-                  <ResizablePanel defaultSize={50} className="h-full min-h-0">Two</ResizablePanel>
-
-                  <ResizableHandle withHandle className="bg-gray-950/5 dark:bg-white/5"/>
-
-                  <ResizablePanel defaultSize={50} className=" h-full min-h-0">Three</ResizablePanel>
-                </ResizablePanelGroup>
+            <ResizablePanel defaultSize={40} className='max-w-[50%] min-w-[30%]'>
             </ResizablePanel>
         </ResizablePanelGroup>
       </div>

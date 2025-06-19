@@ -2,8 +2,8 @@ import React from 'react'
 import { Textarea } from './ui/textarea'
 import type { RegexMatch } from '../types/regex';
 
-const MAX_REGEX_LENGTH = 1000;    // 1000 characters
-const MAX_STRING_LENGTH = 10000;  // 10 000 characters
+const MAX_REGEX_LENGTH = 1000;    // 1.000 max characters
+const MAX_STRING_LENGTH = 10000;  // 10.000 max characters
 
 type RegexInputProps = {
   testString: string;
@@ -29,19 +29,19 @@ const RegexInput: React.FC<RegexInputProps> = ({ testString, regexPattern, setTe
 
 
   return (
-    <div className='flex flex-col gap-y-5 h-full min-h-0 w-full p-3'>
+    <div className='flex flex-col w-full h-full min-h-0 p-3 gap-y-5'>
       <Textarea
         placeholder='Your regex pattern goes here...'
-        className='min-h-[15%] max-h-[30%] h-fit input-box'
+        className='min-h-[15%] max-h-[30%] h-fit ezdev-input-box'
         value={regexPattern}
         onChange={(e) => setRegexPattern(e.target.value)}
         maxLength={MAX_REGEX_LENGTH}
         spellCheck={false}
       />
 
-      <div className='flex-grow relative min-h-0 h-[50%] w-full input-box'>
-        <div className='w-full h-full absolute pointer-events-none overflow-auto p-3 z-0' ref={highlightRef}>
-          <div className='whitespace-pre-wrap break-all text-transparent bg-transparent'>
+      <div className='flex-grow relative min-h-0 h-[50%] w-full ezdev-input-box'>
+        <div className='absolute z-0 w-full h-full max-w-full p-3 overflow-auto pointer-events-none' ref={highlightRef}>
+          <div className='break-all whitespace-pre-wrap bg-transparent'>
             <HighlightedText
               testString={testString}
               matches={matches}
@@ -50,7 +50,7 @@ const RegexInput: React.FC<RegexInputProps> = ({ testString, regexPattern, setTe
         </div>
         <textarea
           placeholder='Your test string goes here...'
-          className='resize-none w-full h-full m-0 p-3 border-0 outline-0 ring-0 whitespace-pre-wrap break-all placeholder:!text-zinc-600 dark:placeholder:!text-zinc-400'
+          className='text-transparent resize-none w-full h-full m-0 p-3 border-0 outline-0 ring-0 whitespace-pre-wrap break-all placeholder:!text-zinc-600 dark:placeholder:!text-zinc-400 max-w-full'
           value={testString}
           onChange={(e) => setTestString(e.target.value)}
           maxLength={MAX_STRING_LENGTH}
@@ -81,7 +81,7 @@ const HighlightedText: React.FC<HighlightedTextProps> = ({ testString, matches }
       highlighted.push(testString.slice(lastIndex, match.startIndex));
     }
 
-    highlighted.push(<mark className="bg-fuchsia-500/40 text-transparent">{match.fullMatch}</mark>);
+    highlighted.push(<mark className="break-words dark:text-white text-zinc-950 bg-fuchsia-500/60">{match.fullMatch}</mark>);
 
     lastIndex = match.endIndex;
   }

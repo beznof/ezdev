@@ -13,35 +13,34 @@ type RegexOptionsProps = {
 };
 
 const RegexOptions: React.FC<RegexOptionsProps> = ({ engines, currentEngine, setCurrentEngine, currentFlags, setCurrentFlags }) => {
+  const handleEngineChange = (value: string) => {
+    const newEngine = engines.find((engine) => engine.name === value);
+    if (newEngine) {
+      setCurrentEngine(newEngine);
+      setCurrentFlags([]);
+    }
+  }
 
   return (
-    <div className="flex flex-row w-full h-fit items-center justify-start gap-5 select-none">
+    <div className="flex flex-row items-center justify-start w-full gap-5 select-none h-fit">
       <p className="font-semibold">
         Options:
       </p>
 
       {/* Engines */}
-      <Select value={currentEngine.name}
-        onValueChange={(value) => {
-          const newEngine = engines.find((engine) => engine.name === value);
-          if (newEngine) {
-            setCurrentEngine(newEngine);
-            setCurrentFlags([]);
-          }
-        }}
-      >
-        <SelectTrigger className="w-[130px]">
+      <Select value={currentEngine.name} onValueChange={(value) => handleEngineChange(value)}>
+        <SelectTrigger className="w-[130px] border-1 ezdev-seperator ">
           <SelectValue/>
         </SelectTrigger>
-        <SelectContent className="bg-gray-100/20 dark:bg-gray-950/20 backdrop-blur-md">
-          <SelectGroup>
+        <SelectContent className="ezdev-hover-window">
+          <SelectGroup className="flex flex-col gap-y-[1px]">
             <SelectLabel>Engines</SelectLabel>
             {
               engines.map((engine) => {
                 return (
                   <SelectItem 
                     value={engine.name}
-                    className="hover:bg-gray-100 dark:hover:bg-zinc-800 hover:!text-purple-500 custom-text-color"
+                    className="hover:bg-gray-100 dark:hover:bg-zinc-800 hover:!text-purple-500 custom-text-color ezdev-select"
                   >
                     {engine.name}
                   </SelectItem>
@@ -58,7 +57,7 @@ const RegexOptions: React.FC<RegexOptionsProps> = ({ engines, currentEngine, set
         variant="outline"
         value={currentFlags}
         onValueChange={(value) => setCurrentFlags(value)}
-        className="dark:!bg-black/25 !bg-white/25 overflow-hidden"
+        className="overflow-hidden bg-transparent rounded-md ezdev-seperator"
       >
         {currentEngine.flags.map((flag) => {
           return (
@@ -66,15 +65,15 @@ const RegexOptions: React.FC<RegexOptionsProps> = ({ engines, currentEngine, set
               <HoverCardTrigger>
                 <ToggleGroupItem 
                   value={flag.index}
-                  className="!rounded-none px-2 hover:bg-zinc-800 hover:text-purple-500 data-[state=on]:text-purple-500"
+                  className="px-2 overflow-hidden border-0 rounded-none ezdev-select"
                 >
                   {flag.index}
                 </ToggleGroupItem>
               </HoverCardTrigger>
-              <HoverCardContent className="w-fit bg-gray-100/20 dark:bg-gray-950/20 backdrop-blur-md">
-                <div className="flex flex-col gap-2 w-full h-full justify-center items-start">
-                  <p className="text-md font-semibold">{flag.name}</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">{flag.description}</p>
+              <HoverCardContent className="w-fit ezdev-hover-window">
+                <div className="flex flex-col items-start justify-center w-full h-full gap-2">
+                  <p className="font-semibold text-md">{flag.name}</p>
+                  <p className="text-xs ezdev-text-secondary">{flag.description}</p>
                   {flag.example}
                 </div>
               </HoverCardContent>

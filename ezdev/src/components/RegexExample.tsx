@@ -8,7 +8,7 @@ type ExampleProps = {
 
 const RegexExample: React.FC<ExampleProps> = ({ regex, identifier, string, match }) => {
   return (
-    <div className="text-sm font-mono px-2 py-1 rounded-sm bg-zinc-800/80 w-fit">
+    <div className="px-2 py-1 font-mono text-sm rounded-sm dark:bg-zinc-800/80 bg-white/80 w-fit">
       <span>
         /{regex}/
         <span className="text-fuchsia-400">
@@ -17,7 +17,7 @@ const RegexExample: React.FC<ExampleProps> = ({ regex, identifier, string, match
         &nbsp;
       </span>
 
-      <span className="text-fuchsia-200">
+      <span className="font-extrabold">
         →&nbsp;
       </span>
 
@@ -29,7 +29,7 @@ const RegexExample: React.FC<ExampleProps> = ({ regex, identifier, string, match
         "&nbsp;
       </span>
 
-      <span className="text-fuchsia-200">
+      <span className="font-extrabold">
         →&nbsp;
       </span>
 
