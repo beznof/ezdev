@@ -147,9 +147,10 @@
     dark:!bg-black/25 !bg-white/25 !backdrop-blur-md
     !rounded-md !border-2 !border-zinc-950/5 dark:!border-white/5 focus-within:!ring-2 focus-within:!ring-zinc-100/15 outline-0
     !transition-shadow !duration-300
-    dark:selection:!bg-zinc-950/70 selection:!bg-white
+    dark:selection:!bg-zinc-950/50 selection:!bg-white/50
     !font-mono !tracking-tight !text-sm
     placeholder:!text-zinc-600 dark:placeholder:!text-zinc-400
+    caret-zinc-950 dark:caret-white
   }
 
   .ezdev-seperator {
@@ -177,7 +178,7 @@
     @apply bg-zinc-100/25 dark:bg-black/25 
     hover:bg-zinc-100 dark:hover:bg-zinc-800 
     data-[state=on]:bg-zinc-100 data-[state=on]:dark:bg-zinc-800 
-     data-[state=on]:hover:bg-white data-[state=on]:hover:dark:bg-zinc-900 
+    data-[state=on]:hover:bg-white data-[state=on]:hover:dark:bg-zinc-900 
     active:bg-zinc-100
     hover:text-purple-500 hover:fill-purple-500 hover:stroke-purple-500 
     data-[state=on]:text-purple-500
